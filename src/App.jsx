@@ -17,10 +17,59 @@ const App = () => {
     {id: 12, order:10, title: 'Card 10', text: 'Love what you do.'} 
   ]);
 
+  const [currentCard, setcurrentCard] = useState(null);
+
+  function dragStartHandler(e, card) {
+    console.log('drag', card);
+    setcurrentCard(card);
+  }
+
+  function dragLeaveHandler(e) {
+    e.target.style.background = '#333';    
+  }
+
+  function dragEndHandler(e) {
+    e.target.style.background = '#333';   
+  }
+
+  function dragOverHandler(e) {
+    e.preventDefault();
+    e.target.style.background = '#0ff';
+  }
+
+  function dropHandler(e, card) {
+    e.preventDefault();
+    setCardList(cardList.map(c => {
+      if (c.id === card.id) {
+          return {...c, order: currentCard.order}
+      }
+      if (c.id === currentCard.id) {
+          return {...c, order: card.order}        
+      }
+      return c
+    }))
+    e.target.style.background = '#333';
+  }
+
+  const sortCards = (a, b) => {
+    if (a.order > b.order) {
+      return 1      
+    } else {
+      return -1
+    }
+  }
+
   return (
     <div className="app">
-      {cardList.map(card => 
-        <div className={'card'}>
+      {cardList.sort(sortCards).map(card => 
+        <div 
+          onDragStart={(e) => dragStartHandler(e, card)}
+          onDragLeave={(e) => dragLeaveHandler(e)}
+          onDragEnd={(e) => dragEndHandler(e)}
+          onDragOver={(e) => dragOverHandler(e)}
+          onDrop={(e) => dropHandler(e, card)}
+          draggable={true}
+          className={'card'}>
           <h3>{card.title}</h3>
           {card.text}
         </div>        
