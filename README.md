@@ -1,3 +1,21 @@
+# React-cards
+
+## A project based on YouTube video tutorials from a [Ulbi TV](https://www.youtube.com/watch?v=FgvJH91a5K0&list=LL&index=3&t=90s).
+
+## Technologies:
+
+#### - HTML
+
+#### - CSS
+
+#### - JavaScript
+
+#### - React
+
+## Demo: https://alena2020.github.io/react-cards/
+
+##📋
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
