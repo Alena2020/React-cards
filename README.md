@@ -12,7 +12,7 @@
 
 #### - React
 
-## Demo: https://alena2020.github.io/react-cards/
+## Demo: https://alena2020.github.io/React-cards/
 
 ##📋
 
